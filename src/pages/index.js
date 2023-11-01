@@ -1,6 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 
+import { StaticImage } from "gatsby-plugin-image";
+
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
@@ -27,6 +29,10 @@ const StyledMenu = styled.nav`
   height: 100vh;
   position: fixed;
   flex-basis: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 `;
 const StyledCategory = styled.div`
   width: 70%;
@@ -52,7 +58,7 @@ const StyledProject = styled.div`
   position: relative;
 `;
 
-const links = [
+const projects = [
   {
     text: "Tutorial",
     url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
@@ -102,10 +108,21 @@ const IndexPage = ({ data }) => {
   return (
     <StyledMain>
       <StyledMenu>
-        <Img fixed={data.file.childImageSharp.fixed} />
+        <StaticImage src="../images/logo.jpg" layout="constrained" width={350} />
+        <StaticImage src="../images/menu.jpg" alt="A dinosaur" layout="constrained" />
+        <StaticImage
+          src="../images/description.jpg"
+          alt="description"
+          layout="constrained"
+        />
+        <StaticImage
+          src="../images/carteDeVisite.jpg"
+          alt="description"
+          layout="constrained"
+        />
       </StyledMenu>
       <StyledCategory>
-        {links.map((link) => (
+        {projects.map((link) => (
           <StyledProject>tesdt</StyledProject>
         ))}
       </StyledCategory>
@@ -119,12 +136,13 @@ export const Head = () => <title>Home Page</title>;
 
 export const query = graphql`
   query {
-    file(relativePath: { eq: "menu.jpg" }) {
-      childImageSharp {
-        # Specify the image processing specifications right in the query.
-        # Makes it trivial to update as your page's design changes.
-        fixed(width: 300) {
-          ...GatsbyImageSharpFixed
+    allImageSharp {
+      edges {
+        node {
+          id
+          fixed(width: 350) {
+            ...GatsbyImageSharpFixed
+          }
         }
       }
     }

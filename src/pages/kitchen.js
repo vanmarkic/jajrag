@@ -34,16 +34,41 @@ const StyledProject = styled.div`
   scroll-snap-align: center;
 `;
 
-const IndexPage = ({ data }) => {
+const KitchenPage = ({ data }) => {
   const [fullScreen, setFullScreen] = React.useState(false);
   console.log(data);
   return (
     <Layout>
-      <StyledCategory>Hello</StyledCategory>
+      <StyledCategory>
+        <StyledProject horizontal>
+          <StaticImage
+            src="../images/kitchen1/1.jpeg"
+            alt="description"
+            objectFit="contain"
+          />
+          <StaticImage
+            src="../images/kitchen1/2.jpeg"
+            alt="description"
+            objectFit="contain"
+          />
+        </StyledProject>
+        <StyledProject onClick={() => setFullScreen(true)}>
+          <StaticImage
+            src="../images/kitchen2/1.jpg"
+            alt="description"
+            objectFit="contain"
+          />
+          <StaticImage
+            src="../images/kitchen2/2.jpeg"
+            alt="description"
+            objectFit="contain"
+          />
+        </StyledProject>
+      </StyledCategory>
     </Layout>
   );
 };
 
-export default IndexPage;
+export default KitchenPage;
 
-export const Head = () => <title>JAJRAG</title>;
+export const Head = () => <title>JAJRAG - Kitchen</title>;

@@ -5,17 +5,11 @@ import { Link } from "gatsby";
 
 const StyledLayout = styled.div`
   width: 100%;
-  min-height: 100vh;
   margin: 0 auto;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 100%;
-  #main-content {
-    width: 100%;
-    max-width: 62.5rem;
-    margin: 0 auto;
-    padding: 0 2.5rem;
-  }
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  overflow: hidden;
 `;
 
 const StyledMain = styled.main`
@@ -25,137 +19,111 @@ const StyledMain = styled.main`
 
 const StyledMenu = styled.nav`
   width: 30vw;
-  height: 100vh;
-  position: fixed;
-  flex-basis: 30%;
+  height: 90%;
+  /* flex-basis: 30%; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   margin-top: 30px;
+  padding: 10px;
+  @media (max-aspect-ratio: 1/1) {
+    display: none;
+  }
 `;
 
+const StyledMobileMenu = styled.button`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: black;
+  display: block;
+  size: 40px;
+  background-color: aliceblue;
+  width: 100px;
+  @media (min-aspect-ratio: 1/1) {
+    display: none;
+  }
+`;
+
+const MobileMenuOverlay = styled.div`
+  opacity: 0.9;
+  position: absolute;
+  z-index: 1500;
+  background-color: white;
+  min-height: 100vh;
+  min-width: 100vw;
+`;
 const SlicedMenu = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 
 const Layout = ({ children }) => {
+  const [showMobileMenu, setShowMobileMenu] = React.useState(false);
+
   return (
-    <StyledLayout>
-      <StyledMain>
-        <StyledMenu>
-          <StaticImage
-            src="../images/logo.jpg"
-            layout="constrained"
-            width={350}
-            style={{ margin: "20px" }}
-          />
-          <SlicedMenu>
-            <Link to="/kitchen" style={{ flex: "1 0 29% " }}>
-              <StaticImage src="../images/slices/slice1.jpg" />
-            </Link>
-            <Link to="/living-room" style={{ flex: "1 0 29% " }}>
-              <StaticImage src="../images/slices/slice2.jpg" />
-            </Link>{" "}
-            <Link to="/office" style={{ flex: "1 0 29% " }}>
-              <StaticImage src="../images/slices/slice3.jpg" />
-            </Link>{" "}
-            <Link to="/bathroom" style={{ flex: "1 0 29% " }}>
-              <StaticImage src="../images/slices/slice4.jpg" />
-            </Link>{" "}
-            <Link to="/doors" style={{ flex: "1 0 29% " }}>
-              <StaticImage src="../images/slices/slice5.jpg" />
-            </Link>{" "}
-            <Link to="/bedroom" style={{ flex: "1 0 29% " }}>
-              <StaticImage src="../images/slices/slice6.jpg" />
-            </Link>
-          </SlicedMenu>
-          {/* <StaticImage
-            src="../images/menu.jpg"
-            layout="constrained"
-            useMap="#image-map"
-          /> */}
-          <StaticImage
-            src="../images/description.jpg"
-            alt="description"
-            layout="constrained"
-            style={{ margin: "20px" }}
-          />
+    <>
+      <StyledMobileMenu onClick={() => setShowMobileMenu(true)}>Menu</StyledMobileMenu>
+      {showMobileMenu ? (
+        <MobileMenuOverlay onClick={() => setShowMobileMenu(false)}>
+          <MenuContent />
+        </MobileMenuOverlay>
+      ) : null}
+      <StyledLayout>
+        <StyledMain>
+          <StyledMenu>
+            <MenuContent />
+          </StyledMenu>
+        </StyledMain>
+        {children}
+      </StyledLayout>
+    </>
+  );
+};
 
-          {/* <img src="src/images/menu.jpg" usemap="#image-map" /> */}
-
-          {/* <map name="image-map">
-            <area
-              target=""
-              alt="Kitchen"
-              title="Kitchen"
-              href=""
-              coords="0,0,140,140"
-              shape="rect"
-              onClick={() => console.log("Kitchen")}
-              onMouseOver={(e) => (e.target.style.backgroundColor = "red")}
-            />
-
-            <area
-              target=""
-              alt="LivingRoom"
-              title="LivingRoom"
-              href=""
-              backgroundColor="red"
-              coords="140,0,240,140"
-              shape="rect"
-              // onMouseOver={() => console.log("LivingRoom")}
-              zIndex={1000}
-              onMouseOver={(e) => (e.target.style.backgroundBlendMode = "hard-light")}
-            /> */}
-          {/* <area
-              target=""
-              alt="Office"
-              title="Office"
-              href=""
-              coords="1969,-1,2985,1017"
-              shape="rect"
-              onMouseOver={() => console.log("Office")}
-            />
-            <area
-              target=""
-              alt="Bathroom"
-              title="Bathroom"
-              href=""
-              coords="3,999,1029,2031"
-              shape="rect"
-              onMouseOver={() => console.log("Bathroom")}
-            />
-            <area
-              target=""
-              alt="Doors"
-              title="Doors"
-              href=""
-              coords="1022,991,1974,2028"
-              shape="rect"
-              onMouseOver={() => console.log("Doors")}
-            />
-            <area
-              target=""
-              alt="Bedroom"
-              title="Bedroom"
-              href=""
-              coords="1959,1004,2985,2028"
-              shape="rect"
-              onMouseOver={() => console.log("Bedroom")}
-            /> */}
-          {/* </map> */}
-          <StaticImage
-            src="../images/carteDeVisite.jpg"
-            alt="description"
-            layout="constrained"
-            style={{ margin: "20px" }}
-          />
-        </StyledMenu>
-      </StyledMain>
-      {children}
-    </StyledLayout>
+const MenuContent = () => {
+  return (
+    <>
+      <StaticImage
+        src="../images/logo.jpg"
+        layout="constrained"
+        width={350}
+        style={{ margin: "20px" }}
+      />
+      <SlicedMenu>
+        <Link to="/kitchen" style={{ flex: "1 0 29% " }}>
+          <StaticImage src="../images/slices/slice1.jpg" />
+        </Link>
+        <Link to="/" style={{ flex: "1 0 29% " }}>
+          <StaticImage src="../images/slices/slice2.jpg" />
+        </Link>{" "}
+        <Link to="/office" style={{ flex: "1 0 29% " }}>
+          <StaticImage src="../images/slices/slice3.jpg" />
+        </Link>{" "}
+        <Link to="/bathroom" style={{ flex: "1 0 29% " }}>
+          <StaticImage src="../images/slices/slice4.jpg" />
+        </Link>{" "}
+        <Link to="/doors" style={{ flex: "1 0 29% " }}>
+          <StaticImage src="../images/slices/slice5.jpg" />
+        </Link>{" "}
+        <Link to="/bedroom" style={{ flex: "1 0 29% " }}>
+          <StaticImage src="../images/slices/slice6.jpg" />
+        </Link>
+      </SlicedMenu>
+      <StaticImage
+        src="../images/description.jpg"
+        alt="description"
+        layout="constrained"
+        style={{ margin: "20px" }}
+      />
+      <StaticImage
+        src="../images/carteDeVisite.jpg"
+        alt="description"
+        layout="constrained"
+        style={{ margin: "20px" }}
+      />
+    </>
   );
 };
 

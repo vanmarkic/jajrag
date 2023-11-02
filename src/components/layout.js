@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
-import { Link, navigate } from "gatsby";
+import { Link } from "gatsby";
 
 const StyledLayout = styled.div`
   width: 100%;

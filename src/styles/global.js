@@ -2,13 +2,14 @@ import { createGlobalStyle } from "styled-components";
 
 export const px2vw = (size, width = 1440) => `${(size / width) * 100}vw`;
 
-export const Global = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   :root {
+      --doc-height: 100%;
       font-size: ${px2vw(24)};
 
       @media (min-width: 768px) {
@@ -19,6 +20,14 @@ export const Global = createGlobalStyle`
         font-size: ${px2vw(1)};
       }
     }
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100vh; /* fallback for Js load */
+    height: var(--doc-height);
+    overscroll-behavior: none; 
+  }
 `;
 
-export default Global;
+export default GlobalStyle;

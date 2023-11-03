@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
+import GlobalStyle from "../styles/global";
 
 const StyledLayout = styled.div`
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  column-gap: 10px;
   overflow: hidden;
 `;
 
@@ -32,15 +32,15 @@ const StyledMenu = styled.nav`
   }
 `;
 
-const StyledMobileMenu = styled.button`
-  position: absolute;
+const StyledMenuButton = styled.button`
+  position: fixed;
   bottom: 10px;
   right: 10px;
   color: black;
-  display: block;
   size: 40px;
   background-color: aliceblue;
   width: 100px;
+  z-index: 1000;
   @media (min-aspect-ratio: 1/1) {
     display: none;
   }
@@ -62,15 +62,17 @@ const SlicedMenu = styled.div`
 const Layout = ({ children }) => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   React.useEffect(() => {
-    window.addEventListener("load", function () {
-      setTimeout(function () {
-        window.scrollTo(0, 1);
-      }, 0);
-    });
+    const documentHeight = () => {
+      const doc = document.documentElement;
+      doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
+    };
+    window.addEventListener("resize", documentHeight);
+    documentHeight();
   }, []);
   return (
     <>
-      <StyledMobileMenu onClick={() => setShowMobileMenu(true)}>Menu</StyledMobileMenu>
+      <GlobalStyle />
+      <StyledMenuButton onClick={() => setShowMobileMenu(true)}>Menu</StyledMenuButton>
       {showMobileMenu ? (
         <MobileMenuOverlay onClick={() => setShowMobileMenu(false)}>
           <MenuContent />

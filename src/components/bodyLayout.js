@@ -10,17 +10,20 @@ export const StyledCategory = styled.div`
     scroll-snap-type: y proximity;
   }
   overflow: scroll;
-  height: 95svh;
+  height: 100svh;
   scroll-snap-type: y mandatory;
-  row-gap: 40px;
+  /* row-gap: 40px; */
 `;
 export const StyledProject = styled.div`
-  min-height: calc(100% - 40px);
+  min-height: 100vh;
   display: flex;
   row-gap: 5px;
   column-gap: 5px;
   scroll-snap-align: center;
   @media (max-aspect-ratio: 1/1) {
     flex-direction: column;
+    padding: 40px 10px;
+    min-height: 100svh;
+    justify-content: center;
   }
 `;

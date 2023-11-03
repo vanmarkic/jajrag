@@ -61,7 +61,13 @@ const SlicedMenu = styled.div`
 
 const Layout = ({ children }) => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-
+  React.useEffect(() => {
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        window.scrollTo(0, 1);
+      }, 0);
+    });
+  }, []);
   return (
     <>
       <StyledMobileMenu onClick={() => setShowMobileMenu(true)}>Menu</StyledMobileMenu>

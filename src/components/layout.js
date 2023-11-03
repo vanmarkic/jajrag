@@ -51,7 +51,7 @@ const MobileMenuOverlay = styled.div`
   position: absolute;
   z-index: 1500;
   background-color: white;
-  min-height: 100vh;
+  height: 100svh;
   min-width: 100vw;
 `;
 const SlicedMenu = styled.div`

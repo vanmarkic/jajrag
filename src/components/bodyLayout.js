@@ -10,7 +10,7 @@ export const StyledCategory = styled.div`
     scroll-snap-type: y proximity;
   }
   overflow: scroll;
-  height: 95vh;
+  height: 95svh;
   scroll-snap-type: y mandatory;
   row-gap: 40px;
 `;

@@ -12,4 +12,9 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head = () => <title>JAJRAG</title>;
+export const Head = () => (
+  <>
+    <title>JAJRAG</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </>
+);

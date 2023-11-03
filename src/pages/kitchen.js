@@ -41,4 +41,4 @@ const KitchenPage = () => {
 
 export default KitchenPage;
 
-export const Head = () => <title>JAJRAG - Kitchen</title>;
+export { Head } from "./index";

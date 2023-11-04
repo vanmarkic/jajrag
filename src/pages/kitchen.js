@@ -1,39 +1,37 @@
 import * as React from "react";
 
-import { StaticImage } from "gatsby-plugin-image";
-
-import { StyledCategory, StyledProject } from "../components/bodyLayout";
+import { StyledCategory } from "../components/bodyLayout";
+import RoomGallery from "../components/RoomGallery";
 
 import Layout from "../components/layout";
+import { useStaticQuery, graphql } from "gatsby";
 
 const KitchenPage = () => {
+  const { allFile } = useStaticQuery(graphql`
+    query {
+      allFile(filter: { relativeDirectory: { glob: "projects/kitchen/**" } }) {
+        group(field: { relativeDirectory: SELECT }) {
+          edges {
+            node {
+              id
+              relativePath
+              childImageSharp {
+                # Specify a fluid image and fragment
+                # The default maxWidth is 800 pixels
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
   return (
     <Layout>
       <StyledCategory>
-        <StyledProject>
-          <StaticImage
-            src="../images/kitchen1/1.jpeg"
-            alt="description"
-            objectFit="contain"
-          />
-          <StaticImage
-            src="../images/kitchen1/2.jpeg"
-            alt="description"
-            objectFit="contain"
-          />
-        </StyledProject>
-        <StyledProject>
-          <StaticImage
-            src="../images/kitchen2/1.jpg"
-            alt="description"
-            objectFit="contain"
-          />
-          <StaticImage
-            src="../images/kitchen2/2.jpeg"
-            alt="description"
-            objectFit="contain"
-          />
-        </StyledProject>
+        <RoomGallery data={allFile} />
       </StyledCategory>
     </Layout>
   );

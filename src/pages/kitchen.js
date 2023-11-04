@@ -10,7 +10,7 @@ const KitchenPage = () => {
   return (
     <Layout>
       <StyledCategory>
-        <StyledProject horizontal>
+        <StyledProject>
           <StaticImage
             src="../images/kitchen1/1.jpeg"
             alt="description"

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import GlobalStyle from "../styles/global";
+import { Head } from "../pages";
 
 const StyledLayout = styled.div`
   width: 100%;
@@ -12,21 +13,18 @@ const StyledLayout = styled.div`
   overflow: hidden;
 `;
 
-const StyledMain = styled.main`
-  /* overflow-y: hidden; */
-  /* overflow-x: hidden; */
-`;
-
-const StyledMenu = styled.nav`
+const SideMenu = styled.nav`
   width: 30vw;
-  height: 90%;
-  /* flex-basis: 30%; */
+  max-height: 100svh;
+  row-gap: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   margin-top: 30px;
-  padding: 10px;
+  padding: 48px;
+  align-self: flex-end;
+  margin-bottom: 30px;
   @media (max-aspect-ratio: 1/1) {
     display: none;
   }
@@ -47,16 +45,27 @@ const StyledMenuButton = styled.button`
 `;
 
 const MobileMenuOverlay = styled.div`
-  opacity: 0.9;
   position: absolute;
   z-index: 1500;
   background-color: white;
   height: 100svh;
-  min-width: 100vw;
+  padding: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 100%;
 `;
 const SlicedMenu = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media (max-aspect-ratio: 1/1) {
+    max-width: 350px;
+  }
+`;
+const StyledContact = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Layout = ({ children }) => {
@@ -71,6 +80,7 @@ const Layout = ({ children }) => {
   }, []);
   return (
     <>
+      <Head />
       <GlobalStyle />
       <StyledMenuButton onClick={() => setShowMobileMenu(true)}>Menu</StyledMenuButton>
       {showMobileMenu ? (
@@ -79,43 +89,58 @@ const Layout = ({ children }) => {
         </MobileMenuOverlay>
       ) : null}
       <StyledLayout>
-        <StyledMain>
-          <StyledMenu>
-            <MenuContent />
-          </StyledMenu>
-        </StyledMain>
+        <SideMenu>
+          <MenuContent />
+        </SideMenu>
         {children}
       </StyledLayout>
     </>
   );
 };
 
+const activeLink = {};
+
 const MenuContent = () => {
+  const [currentRoute, setCurrentRoute] = React.useState("/");
+
+  const handleIsCurrent = ({ href, isCurrent }) => {
+    if (isCurrent) setCurrentRoute(href);
+  };
   return (
     <>
       <StaticImage
         src="../images/logo.jpg"
         layout="constrained"
+        alt="jajrag"
         width={350}
         style={{ margin: "20px" }}
       />
       <SlicedMenu>
-        <Link to="/kitchen" style={{ flex: "1 0 29% " }}>
-          <StaticImage src="../images/slices/slice1.jpg" />
+        <Link getProps={handleIsCurrent} to="/kitchen" style={{ flex: "1 0 29% " }}>
+          {currentRoute === "/kitchen/" ? (
+            <StaticImage
+              transformOptions={{
+                duotone: { highlight: "#B4B4B4", shadow: "#000000", opacity: "50" },
+              }}
+              src="../images/slices/slice1.jpg"
+            />
+          ) : (
+            <StaticImage src="../images/slices/slice1.jpg" />
+          )}
         </Link>
-        <Link to="/" style={{ flex: "1 0 29% " }}>
+        <Link getProps={handleIsCurrent} to="/" style={{ flex: "1 0 29% " }}>
           <StaticImage src="../images/slices/slice2.jpg" />
-        </Link>{" "}
-        <Link to="/office" style={{ flex: "1 0 29% " }}>
+        </Link>
+        <Link getProps={handleIsCurrent} to="/kitchen" style={{ flex: "1 0 29% " }}>
           <StaticImage src="../images/slices/slice3.jpg" />
-        </Link>{" "}
-        <Link to="/bathroom" style={{ flex: "1 0 29% " }}>
+        </Link>
+        <Link getProps={handleIsCurrent} to="/kitchen" style={{ flex: "1 0 29% " }}>
           <StaticImage src="../images/slices/slice4.jpg" />
-        </Link>{" "}
-        <Link to="/doors" style={{ flex: "1 0 29% " }}>
+        </Link>
+        <Link getProps={handleIsCurrent} to="/kitchen" style={{ flex: "1 0 29% " }}>
           <StaticImage src="../images/slices/slice5.jpg" />
-        </Link>{" "}
-        <Link to="/bedroom" style={{ flex: "1 0 29% " }}>
+        </Link>
+        <Link getProps={handleIsCurrent} to="/kitchen" style={{ flex: "1 0 29% " }}>
           <StaticImage src="../images/slices/slice6.jpg" />
         </Link>
       </SlicedMenu>
@@ -123,14 +148,25 @@ const MenuContent = () => {
         src="../images/description.jpg"
         alt="description"
         layout="constrained"
-        style={{ margin: "20px" }}
+        width={350}
+        style={{ margin: "5px" }}
       />
-      <StaticImage
-        src="../images/carteDeVisite.jpg"
-        alt="description"
-        layout="constrained"
-        style={{ margin: "20px" }}
-      />
+      <StyledContact>
+        <StaticImage
+          src="../images/contact.jpg"
+          alt="contact"
+          width={100}
+          layout="fixed"
+          style={{ margin: "5px" }}
+        />
+        <StaticImage
+          src="../images/carteDeVisite.jpg"
+          alt="email"
+          layout="constrained"
+          style={{ margin: "5px" }}
+          width={200}
+        />
+      </StyledContact>
     </>
   );
 };

@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 export const StyledCategory = styled.div`
-  /* width: 70vw; */
-  /* margin-left: 30vw; */
   display: flex;
   flex-direction: column;
-  /* min-height: 100vh; */
+  padding: 2svw;
   &.proximity {
     scroll-snap-type: y proximity;
   }
   overflow: scroll;
   height: 100svh;
   scroll-snap-type: y mandatory;
-  /* row-gap: 40px; */
+  width: 100%;
+  @media (min-aspect-ratio: 1/1) {
+    width: 70vw;
+  }
 `;
 export const StyledProject = styled.div`
   min-height: 100vh;
@@ -20,6 +21,7 @@ export const StyledProject = styled.div`
   row-gap: 5px;
   column-gap: 5px;
   scroll-snap-align: center;
+  min-width: 100%;
   @media (max-aspect-ratio: 1/1) {
     flex-direction: column;
     padding: 40px 10px;

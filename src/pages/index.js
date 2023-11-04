@@ -1,11 +1,15 @@
 import * as React from "react";
-import { StyledCategory } from "../components/bodyLayout";
+import { StyledCategory, StyledProject } from "../components/bodyLayout";
 import Layout from "../components/layout";
 
 const IndexPage = () => {
   return (
     <Layout>
-      <StyledCategory>Hello</StyledCategory>
+      <StyledCategory>
+        <StyledProject>
+          <div>Hello</div>
+        </StyledProject>
+      </StyledCategory>
     </Layout>
   );
 };

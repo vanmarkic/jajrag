@@ -102,6 +102,4 @@ const Layout = ({ children }) => {
   );
 };
 
-const activeLink = {};
-
 export default Layout;

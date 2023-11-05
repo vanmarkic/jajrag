@@ -49,7 +49,7 @@ export const MenuContent = () => {
             />
           )}
         </Link>
-        <Link getProps={handleIsCurrent} to="/" style={{ flex: "1 0 29% " }}>
+        <Link getProps={handleIsCurrent} to="/living-room" style={{ flex: "1 0 29% " }}>
           <StaticImage
             as="a"
             onMouseEnter={() => setIsHovered("/kitchen/")}
@@ -57,13 +57,13 @@ export const MenuContent = () => {
             src="../images/slices/slice2.jpg"
           />
         </Link>
-        <Link getProps={handleIsCurrent} to="/kitchen" style={{ flex: "1 0 29% " }}>
+        <Link getProps={handleIsCurrent} to="/office" style={{ flex: "1 0 29% " }}>
           <StaticImage as="a" src="../images/slices/slice3.jpg" />
         </Link>
         <Link getProps={handleIsCurrent} to="/kitchen" style={{ flex: "1 0 29% " }}>
           <StaticImage as="a" src="../images/slices/slice4.jpg" />
         </Link>
-        <Link getProps={handleIsCurrent} to="/kitchen" style={{ flex: "1 0 29% " }}>
+        <Link getProps={handleIsCurrent} to="/doors" style={{ flex: "1 0 29% " }}>
           <StaticImage as="a" src="../images/slices/slice5.jpg" />
         </Link>
         <Link getProps={handleIsCurrent} to="/kitchen" style={{ flex: "1 0 29% " }}>

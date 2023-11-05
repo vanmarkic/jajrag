@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   html,
   body {
-    font-family: "Open Sans";
+    font-family: "Architects Daughter";
     padding: 0;
     margin: 0;
     height: 100vh; /* fallback for Js load */

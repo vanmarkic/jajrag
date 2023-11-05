@@ -35,9 +35,13 @@ const StyledMenuButton = styled.button`
   right: 10px;
   color: #191919;
   size: 40px;
-  background-color: aliceblue;
+  border: 3px solid #191919 !important;
+  border-radius: 5px !important;
+  background-color: white !important;
   width: 100px;
   z-index: 1000;
+  font-weight: bold;
+  font-family: "Architects Daughter" !important;
   @media (min-aspect-ratio: 1/1) {
     display: none;
   }
@@ -81,8 +85,8 @@ const Layout = ({ children }) => {
     <>
       <Head />
       <GlobalStyle />
-      <StyledMenuButton onClick={() => setShowMobileMenu(true)}>Menu</StyledMenuButton>
-      <CategoryHeader>Category</CategoryHeader>
+      <StyledMenuButton onClick={() => setShowMobileMenu(true)}>MENU</StyledMenuButton>
+      <CategoryHeader>KITCHEN</CategoryHeader>
       {showMobileMenu ? (
         <MobileMenuOverlay onClick={() => setShowMobileMenu(false)}>
           <MenuContent />

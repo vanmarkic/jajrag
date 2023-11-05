@@ -29,7 +29,7 @@ export const StyledProject = styled.div`
     /* min-height: 100%; */
     /* min-width: auto; */
     padding: 40px 10px;
-    /* min-height: 100svh; */
+    min-height: 100svh;
     align-items: center;
     justify-content: center;
   }

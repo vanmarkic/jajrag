@@ -21,11 +21,16 @@ export const StyledProject = styled.div`
   row-gap: 5px;
   column-gap: 5px;
   scroll-snap-align: center;
-  min-width: 100%;
+  /* min-width: 100%; */
+  justify-content: center;
+  align-items: center;
   @media (max-aspect-ratio: 1/1) {
     flex-direction: column;
+    /* min-height: 100%; */
+    /* min-width: auto; */
     padding: 40px 10px;
-    min-height: 100svh;
+    /* min-height: 100svh; */
+    align-items: center;
     justify-content: center;
   }
 `;

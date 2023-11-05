@@ -16,11 +16,7 @@ const KitchenPage = () => {
               id
               relativePath
               childImageSharp {
-                # Specify a fluid image and fragment
-                # The default maxWidth is 800 pixels
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(layout: CONSTRAINED)
               }
             }
           }

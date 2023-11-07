@@ -32,7 +32,7 @@ const SideMenu = styled.nav`
 
 const StyledMenuButton = styled.button`
   position: fixed;
-  bottom: 10px;
+  bottom: 6px;
   right: 10px;
   color: #191919;
   size: 40px;
@@ -42,7 +42,9 @@ const StyledMenuButton = styled.button`
   width: 100px;
   z-index: 1000;
   font-weight: bold;
+  font-size: 16px;
   font-family: "Architects Daughter" !important;
+  cursor: pointer;
   @media (min-aspect-ratio: 1/1) {
     display: none;
   }
@@ -95,6 +97,9 @@ const Layout = ({ children }) => {
       {showMobileMenu ? (
         <MobileMenuOverlay onClick={() => setShowMobileMenu(false)}>
           <MenuContent />
+          <StyledMenuButton onClick={() => setShowMobileMenu(false)}>
+            CLOSE
+          </StyledMenuButton>
         </MobileMenuOverlay>
       ) : null}
       <StyledLayout>

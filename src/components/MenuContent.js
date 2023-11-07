@@ -34,30 +34,38 @@ export const MenuContent = () => {
       />
       <SlicedMenu>
         <Link
-          getProps={handleIsCurrent}
           onMouseEnter={() => setIsHovered("/kitchen/")}
           onMouseLeave={() => setIsHovered("")}
+          getProps={handleIsCurrent}
           to="/kitchen"
-          style={{ flex: "1 0 29% " }}
+          style={{ flex: "1 0 29% ", position: "relative" }}
+          as="div"
         >
-          {currentRoute === "/kitchen/" || isHovered === "/kitchen/" ? (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              as="a"
-              transformOptions={{
-                duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
-              }}
-              src="../images/slices/slice1.jpg"
-              style={{ boxShadow: "0 0 8px 8px white inset" }}
-            />
-          ) : (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              src="../images/slices/slice1.jpg"
-            />
-          )}
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            src="../images/slices/slice1.jpg"
+            style={
+              currentRoute === "/kitchen/" || isHovered === "/kitchen/"
+                ? { display: "none" }
+                : {}
+            }
+          />
+
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            as="a"
+            transformOptions={{
+              duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
+            }}
+            src="../images/slices/slice1.jpg"
+            style={
+              currentRoute !== "/kitchen/" && isHovered !== "/kitchen/"
+                ? { display: "none" }
+                : {}
+            }
+          />
         </Link>
         <Link
           onMouseEnter={() => setIsHovered("/living-room/")}
@@ -98,104 +106,136 @@ export const MenuContent = () => {
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
           to="/office"
-          style={{ flex: "1 0 29% " }}
+          style={{ flex: "1 0 29% ", position: "relative" }}
+          as="div"
         >
-          {currentRoute === "/office/" || isHovered === "/office/" ? (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              as="a"
-              transformOptions={{
-                duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
-              }}
-              src="../images/slices/slice3.jpg"
-              style={{ boxShadow: "0 0 8px 8px white inset" }}
-            />
-          ) : (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              src="../images/slices/slice3.jpg"
-            />
-          )}
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            src="../images/slices/slice3.jpg"
+            style={
+              currentRoute === "/office/" || isHovered === "/office/"
+                ? { display: "none" }
+                : {}
+            }
+          />
+
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            as="a"
+            transformOptions={{
+              duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
+            }}
+            src="../images/slices/slice3.jpg"
+            style={
+              currentRoute !== "/office/" && isHovered !== "/office/"
+                ? { display: "none" }
+                : {}
+            }
+          />
         </Link>
         <Link
-          onMouseEnter={() => setIsHovered("/kitchen/")}
+          onMouseEnter={() => setIsHovered("/bathroom/")}
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
-          to="/kitchen"
-          style={{ flex: "1 0 29% " }}
+          to="/bathroom"
+          style={{ flex: "1 0 29% ", position: "relative" }}
+          as="div"
         >
-          {currentRoute === "/kitchen/" || isHovered === "/kitchen/" ? (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              as="a"
-              transformOptions={{
-                duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
-              }}
-              src="../images/slices/slice4.jpg"
-              style={{ boxShadow: "0 0 8px 8px white inset" }}
-            />
-          ) : (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              src="../images/slices/slice4.jpg"
-            />
-          )}
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            src="../images/slices/slice4.jpg"
+            style={
+              currentRoute === "/bathroom/" || isHovered === "/bathroom/"
+                ? { display: "none" }
+                : {}
+            }
+          />
+
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            as="a"
+            transformOptions={{
+              duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
+            }}
+            src="../images/slices/slice4.jpg"
+            style={
+              currentRoute !== "/bathroom/" && isHovered !== "/bathroom/"
+                ? { display: "none" }
+                : {}
+            }
+          />
         </Link>
         <Link
           onMouseEnter={() => setIsHovered("/doors/")}
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
           to="/doors"
-          style={{ flex: "1 0 29% " }}
+          style={{ flex: "1 0 29% ", position: "relative" }}
+          as="div"
         >
-          {currentRoute === "/doors/" || isHovered === "/doors/" ? (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              as="a"
-              transformOptions={{
-                duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
-              }}
-              src="../images/slices/slice5.jpg"
-              style={{ boxShadow: "0 0 8px 8px white inset" }}
-            />
-          ) : (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              src="../images/slices/slice5.jpg"
-            />
-          )}
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            src="../images/slices/slice5.jpg"
+            style={
+              currentRoute === "/doors/" || isHovered === "/doors/"
+                ? { display: "none" }
+                : {}
+            }
+          />
+
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            as="a"
+            transformOptions={{
+              duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
+            }}
+            src="../images/slices/slice5.jpg"
+            style={
+              currentRoute !== "/doors/" && isHovered !== "/doors/"
+                ? { display: "none" }
+                : {}
+            }
+          />
         </Link>
         <Link
-          onMouseEnter={() => setIsHovered("/kitchen/")}
+          onMouseEnter={() => setIsHovered("/bedroom/")}
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
-          to="/kitchen"
-          style={{ flex: "1 0 29% " }}
+          to="/bedroom"
+          style={{ flex: "1 0 29% ", position: "relative" }}
+          as="div"
         >
-          {currentRoute === "/kitchen/" || isHovered === "/kitchen/" ? (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              as="a"
-              transformOptions={{
-                duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
-              }}
-              src="../images/slices/slice6.jpg"
-              style={{ boxShadow: "0 0 8px 8px white inset" }}
-            />
-          ) : (
-            <StaticImage
-              placeholder="none"
-              loading="eager"
-              src="../images/slices/slice6.jpg"
-            />
-          )}
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            src="../images/slices/slice6.jpg"
+            style={
+              currentRoute === "/bedroom/" || isHovered === "/bedroom/"
+                ? { opacity: 0, display: "none" }
+                : { opacity: 1, transition: "opacity 1s ease-in-out" }
+            }
+          />
+
+          <StaticImage
+            placeholder="none"
+            loading="eager"
+            as="a"
+            transformOptions={{
+              duotone: { highlight: "#FFFFFF", shadow: "#39328b", opacity: "100" },
+            }}
+            src="../images/slices/slice6.jpg"
+            style={
+              currentRoute !== "/bedroom/" && isHovered !== "/bedroom/"
+                ? { display: "none" }
+                : {}
+            }
+          />
         </Link>
       </SlicedMenu>
       <StaticImage

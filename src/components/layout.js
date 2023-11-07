@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { MenuContent } from "./MenuContent";
 import GlobalStyle from "../styles/global";
 import { Head } from "../pages";
+import { useLocation } from "@reach/router";
 
 const StyledLayout = styled.div`
   width: 100%;
@@ -73,6 +74,7 @@ const MobileMenuOverlay = styled.div`
 
 const Layout = ({ children }) => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
+  const { pathname } = useLocation();
   React.useEffect(() => {
     const documentHeight = () => {
       const doc = document.documentElement;
@@ -81,12 +83,15 @@ const Layout = ({ children }) => {
     window.addEventListener("resize", documentHeight);
     documentHeight();
   }, []);
+
   return (
     <>
       <Head />
       <GlobalStyle />
       <StyledMenuButton onClick={() => setShowMobileMenu(true)}>MENU</StyledMenuButton>
-      <CategoryHeader>KITCHEN</CategoryHeader>
+      <CategoryHeader>
+        {pathname.replace("/", "").replace("/", "").toUpperCase()}
+      </CategoryHeader>
       {showMobileMenu ? (
         <MobileMenuOverlay onClick={() => setShowMobileMenu(false)}>
           <MenuContent />

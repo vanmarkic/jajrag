@@ -13,14 +13,7 @@ module.exports = {
     "gatsby-plugin-sitemap",
     // "gatsby-plugin-manifest",
     "gatsby-transformer-remark",
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        defaults: {
-          quality: 80,
-        },
-      },
-    },
+    "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",

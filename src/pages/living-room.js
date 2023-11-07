@@ -16,7 +16,7 @@ const LivingRoomPage = () => {
               id
               relativePath
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED)
+                gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 1000)
               }
             }
           }

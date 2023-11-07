@@ -32,13 +32,10 @@ export const GlobalStyle = createGlobalStyle`
 
   .image {
     /* min-width: 200px; */
-    flex: 0 0 calc(50%-10px);
-    /* height: 100%;
-    aspect-ratio: ;
-    object-fit: cover;
-    */
+    /* flex: 0 0 calc(50%-10px); */
     @media (min-aspect-ratio: 1/1) {
-      flex: 0 0 calc(50%-10px);
+      /* flex: 0 0 calc(50%-10px); */
+      max-width: 50% ;
     } 
 
 

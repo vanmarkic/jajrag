@@ -16,7 +16,7 @@ const OfficePage = () => {
               id
               relativePath
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED)
+                gatsbyImageData(layout: CONSTRAINED, placeholder: NONE, width: 1000)
               }
             }
           }
@@ -34,5 +34,3 @@ const OfficePage = () => {
 };
 
 export default OfficePage;
-
-export { Head } from "./index";

@@ -16,7 +16,9 @@ const RoomGallery = ({ data }) => {
               key={edge.node.id}
               alt={"image"}
               image={edge.node.childImageSharp.gatsbyImageData}
+              className="image"
               objectFit="contain"
+              loading="eager"
             />
           ))}
         </StyledProject>

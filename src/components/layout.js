@@ -75,6 +75,8 @@ const MobileMenuOverlay = styled.div`
 const Layout = ({ children }) => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const { pathname } = useLocation();
+
+  const currentRoom = pathname.split("/");
   React.useEffect(() => {
     const documentHeight = () => {
       const doc = document.documentElement;
@@ -89,9 +91,7 @@ const Layout = ({ children }) => {
       <Head />
       <GlobalStyle />
       <StyledMenuButton onClick={() => setShowMobileMenu(true)}>MENU</StyledMenuButton>
-      <CategoryHeader>
-        {pathname.replace("/", "").replace("/", "").toUpperCase()}
-      </CategoryHeader>
+      <CategoryHeader>{currentRoom[currentRoom.length - 2].toUpperCase()}</CategoryHeader>
       {showMobileMenu ? (
         <MobileMenuOverlay onClick={() => setShowMobileMenu(false)}>
           <MenuContent />

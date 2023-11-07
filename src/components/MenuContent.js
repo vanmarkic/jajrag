@@ -46,7 +46,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice1.jpg"
             style={
-              currentRoute === "/kitchen/" || isHovered === "/kitchen/"
+              currentRoute.includes("/kitchen") || isHovered.includes("/kitchen")
                 ? { display: "none" }
                 : {}
             }
@@ -61,7 +61,7 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice1.jpg"
             style={
-              currentRoute !== "/kitchen/" && isHovered !== "/kitchen/"
+              !currentRoute.includes("/kitchen") && !isHovered.includes("/kitchen")
                 ? { display: "none" }
                 : {}
             }
@@ -80,7 +80,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice2.jpg"
             style={
-              currentRoute === "/living-room/" || isHovered === "/living-room/"
+              currentRoute.includes("/living-room") || isHovered.includes("/living-room")
                 ? { display: "none" }
                 : {}
             }
@@ -95,7 +95,8 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice2.jpg"
             style={
-              currentRoute !== "/living-room/" && isHovered !== "/living-room/"
+              !currentRoute.includes("/living-room") &&
+              !isHovered.includes("/living-room")
                 ? { display: "none" }
                 : {}
             }
@@ -114,7 +115,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice3.jpg"
             style={
-              currentRoute === "/office/" || isHovered === "/office/"
+              currentRoute.includes("/office") || isHovered.includes("/office")
                 ? { display: "none" }
                 : {}
             }
@@ -129,7 +130,7 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice3.jpg"
             style={
-              currentRoute !== "/office/" && isHovered !== "/office/"
+              !currentRoute.includes("/office") && !isHovered.includes("/office")
                 ? { display: "none" }
                 : {}
             }
@@ -148,7 +149,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice4.jpg"
             style={
-              currentRoute === "/bathroom/" || isHovered === "/bathroom/"
+              currentRoute.includes("/bathroom") || isHovered.includes("/bathroom")
                 ? { display: "none" }
                 : {}
             }
@@ -163,7 +164,7 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice4.jpg"
             style={
-              currentRoute !== "/bathroom/" && isHovered !== "/bathroom/"
+              !currentRoute.includes("/bathroom") && !isHovered.includes("/bathroom")
                 ? { display: "none" }
                 : {}
             }
@@ -182,7 +183,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice5.jpg"
             style={
-              currentRoute === "/doors/" || isHovered === "/doors/"
+              currentRoute.includes("/doors") || isHovered.includes("/doors")
                 ? { display: "none" }
                 : {}
             }
@@ -197,7 +198,7 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice5.jpg"
             style={
-              currentRoute !== "/doors/" && isHovered !== "/doors/"
+              !currentRoute.includes("/doors") && !isHovered.includes("/doors")
                 ? { display: "none" }
                 : {}
             }
@@ -216,7 +217,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice6.jpg"
             style={
-              currentRoute === "/bedroom/" || isHovered === "/bedroom/"
+              currentRoute.includes("/bedroom") || isHovered.includes("/bedroom")
                 ? { opacity: 0, display: "none" }
                 : { opacity: 1, transition: "opacity 1s ease-in-out" }
             }
@@ -231,7 +232,7 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice6.jpg"
             style={
-              currentRoute !== "/bedroom/" && isHovered !== "/bedroom/"
+              !currentRoute.includes("/bedroom") && !isHovered.includes("/bedroom")
                 ? { display: "none" }
                 : {}
             }

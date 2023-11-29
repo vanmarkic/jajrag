@@ -9,7 +9,7 @@ import { useStaticQuery, graphql } from "gatsby";
 const BathroomPage = () => {
   const { allFile } = useStaticQuery(graphql`
     query {
-      allFile(filter: { relativeDirectory: { glob: "projects/bathroom/**" } }) {
+      allFile(filter: { relativeDirectory: { glob: "projects/**" } }) {
         group(field: { relativeDirectory: SELECT }) {
           edges {
             node {
@@ -24,6 +24,24 @@ const BathroomPage = () => {
       }
     }
   `);
+
+  // const bedroom = useStaticQuery(graphql`
+  //   query {
+  //     allFile(filter: { relativeDirectory: { glob: "projects/bedroom/**" } }) {
+  //       group(field: { relativeDirectory: SELECT }) {
+  //         edges {
+  //           node {
+  //             id
+  //             relativePath
+  //             childImageSharp {
+  //               gatsbyImageData(layout: CONSTRAINED)
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
   return (
     <Layout>
       <StyledCategory>

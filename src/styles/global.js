@@ -1,8 +1,10 @@
 import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 export const px2vw = (size, width = 1440) => `${(size / width) * 100}vw`;
 
 export const GlobalStyle = createGlobalStyle`
+
   * {
     margin: 0;
     padding: 0;

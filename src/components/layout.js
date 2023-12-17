@@ -45,6 +45,7 @@ const StyledMenuButton = styled.button`
   font-size: 16px;
   font-family: "Architects Daughter" !important;
   cursor: pointer;
+  height: 40px;
   @media (min-aspect-ratio: 1/1) {
     display: none;
   }

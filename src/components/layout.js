@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { MenuContent } from "./MenuContent";
 import GlobalStyle from "../styles/global";
-import { Head } from "../pages";
+// import { Head } from "../pages";
 import { useLocation } from "@reach/router";
 
 const StyledLayout = styled.div`
@@ -13,7 +13,7 @@ const StyledLayout = styled.div`
   overflow: hidden;
 `;
 
-const SideMenu = styled.nav`
+const SidePanel = styled.nav`
   width: 30vw;
   max-height: 100svh;
   row-gap: 20px;
@@ -75,12 +75,29 @@ const MobileMenuOverlay = styled.div`
   min-width: 100%;
 `;
 
-const Layout = ({ children }) => {
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2svw;
+  &.proximity {
+    scroll-snap-type: y proximity;
+  }
+  overflow: scroll;
+  height: 100svh;
+  scroll-snap-type: y mandatory;
+  width: 100%;
+  @media (min-aspect-ratio: 1/1) {
+    width: 70vw;
+  }
+`;
+
+const Layout = ({ children, roomInView }) => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const { pathname } = useLocation();
 
   const currentRoom = pathname.split("/");
   React.useEffect(() => {
+    console.log(roomInView);
     const documentHeight = () => {
       const doc = document.documentElement;
       doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
@@ -91,23 +108,22 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Head />
       <GlobalStyle />
       <StyledMenuButton onClick={() => setShowMobileMenu(true)}>MENU</StyledMenuButton>
       <CategoryHeader>{currentRoom[currentRoom.length - 2].toUpperCase()}</CategoryHeader>
       {showMobileMenu ? (
         <MobileMenuOverlay onClick={() => setShowMobileMenu(false)}>
-          <MenuContent />
+          <MenuContent roomInView={roomInView} />
           <StyledMenuButton onClick={() => setShowMobileMenu(false)}>
             CLOSE
           </StyledMenuButton>
         </MobileMenuOverlay>
       ) : null}
       <StyledLayout>
-        <SideMenu>
-          <MenuContent />
-        </SideMenu>
-        {children}
+        <SidePanel>
+          <MenuContent roomInView={roomInView} />
+        </SidePanel>
+        <Main>{children}</Main>
       </StyledLayout>
     </>
   );

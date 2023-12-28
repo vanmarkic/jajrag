@@ -10,18 +10,18 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-  :root {
+  /* :root {
       --doc-height: 100%;
-      font-size: ${px2vw(24)};
+      font-size: ${px2vw(12)};
 
       @media (min-width: 768px) {
-        font-size: ${px2vw(30)};
+        font-size: ${px2vw(14)};
       }
 
       @media (min-width: 1024px) {
-        font-size: ${px2vw(36)};
+        font-size: ${px2vw(18)};
       }
-    }
+    } */
   html,
   body {
     font-family: "Architects Daughter";

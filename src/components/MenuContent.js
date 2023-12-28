@@ -2,6 +2,8 @@ import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import { useLocation } from "@reach/router";
+
 const SlicedMenu = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -14,11 +16,13 @@ const StyledContact = styled.div`
   flex-direction: column;
 `;
 
-export const MenuContent = () => {
-  const [currentRoute, setCurrentRoute] = React.useState("/");
-  const [isHovered, setIsHovered] = React.useState("/");
+export const MenuContent = ({ roomInView }) => {
+  const { pathname, hash, href, state } = useLocation();
+  const [currentRoute, setCurrentRoute] = React.useState("#");
+  const [isHovered, setIsHovered] = React.useState("#");
 
-  const handleIsCurrent = ({ href, isCurrent }) => {
+  const handleIsCurrent = ({ href, isCurrent, location }) => {
+    // console.log(location, href, isCurrent);
     if (isCurrent) setCurrentRoute(href);
   };
   return (
@@ -34,10 +38,10 @@ export const MenuContent = () => {
       />
       <SlicedMenu>
         <Link
-          onMouseEnter={() => setIsHovered("/kitchen/")}
+          onMouseEnter={() => setIsHovered("#kitchen")}
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
-          to="/kitchen"
+          to="#kitchen"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
         >
@@ -46,7 +50,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice1.jpg"
             style={
-              currentRoute.includes("/kitchen") || isHovered.includes("/kitchen")
+              currentRoute.includes("#kitchen") || isHovered.includes("#kitchen")
                 ? { display: "none" }
                 : {}
             }
@@ -61,17 +65,17 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice1.jpg"
             style={
-              !currentRoute.includes("/kitchen") && !isHovered.includes("/kitchen")
+              !currentRoute.includes("#kitchen") && !isHovered.includes("#kitchen")
                 ? { display: "none" }
                 : {}
             }
           />
         </Link>
         <Link
-          onMouseEnter={() => setIsHovered("/living-room/")}
+          onMouseEnter={() => setIsHovered("#living-room")}
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
-          to="/living-room"
+          to="#living-room"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
         >
@@ -80,7 +84,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice2.jpg"
             style={
-              currentRoute.includes("/living-room") || isHovered.includes("/living-room")
+              currentRoute.includes("#living-room") || isHovered.includes("#living-room")
                 ? { display: "none" }
                 : {}
             }
@@ -95,18 +99,18 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice2.jpg"
             style={
-              !currentRoute.includes("/living-room") &&
-              !isHovered.includes("/living-room")
+              !currentRoute.includes("#living-room") &&
+              !isHovered.includes("#living-room")
                 ? { display: "none" }
                 : {}
             }
           />
         </Link>
         <Link
-          onMouseEnter={() => setIsHovered("/office/")}
+          onMouseEnter={() => setIsHovered("#office")}
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
-          to="/office"
+          to="#office"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
         >
@@ -115,7 +119,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice3.jpg"
             style={
-              currentRoute.includes("/office") || isHovered.includes("/office")
+              currentRoute.includes("#office") || isHovered.includes("#office")
                 ? { display: "none" }
                 : {}
             }
@@ -130,17 +134,17 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice3.jpg"
             style={
-              !currentRoute.includes("/office") && !isHovered.includes("/office")
+              !currentRoute.includes("#office") && !isHovered.includes("#office")
                 ? { display: "none" }
                 : {}
             }
           />
         </Link>
         <Link
-          onMouseEnter={() => setIsHovered("/bathroom/")}
+          onMouseEnter={() => setIsHovered("#bathroom")}
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
-          to="/bathroom"
+          to="#bathroom"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
         >
@@ -149,7 +153,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice4.jpg"
             style={
-              currentRoute.includes("/bathroom") || isHovered.includes("/bathroom")
+              currentRoute.includes("#bathroom") || isHovered.includes("#bathroom")
                 ? { display: "none" }
                 : {}
             }
@@ -164,17 +168,17 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice4.jpg"
             style={
-              !currentRoute.includes("/bathroom") && !isHovered.includes("/bathroom")
+              !currentRoute.includes("#bathroom") && !isHovered.includes("#bathroom")
                 ? { display: "none" }
                 : {}
             }
           />
         </Link>
         <Link
-          onMouseEnter={() => setIsHovered("/doors/")}
+          onMouseEnter={() => setIsHovered("#doors")}
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
-          to="/doors"
+          to="#doors"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
         >
@@ -183,7 +187,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice5.jpg"
             style={
-              currentRoute.includes("/doors") || isHovered.includes("/doors")
+              currentRoute.includes("#doors") || isHovered.includes("#doors")
                 ? { display: "none" }
                 : {}
             }
@@ -198,17 +202,17 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice5.jpg"
             style={
-              !currentRoute.includes("/doors") && !isHovered.includes("/doors")
+              !currentRoute.includes("#doors") && !isHovered.includes("#doors")
                 ? { display: "none" }
                 : {}
             }
           />
         </Link>
         <Link
-          onMouseEnter={() => setIsHovered("/bedroom/")}
+          onMouseEnter={() => setIsHovered("#bedroom")}
           onMouseLeave={() => setIsHovered("")}
           getProps={handleIsCurrent}
-          to="/bedroom"
+          to="#bedroom"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
         >
@@ -217,7 +221,7 @@ export const MenuContent = () => {
             loading="eager"
             src="../images/slices/slice6.jpg"
             style={
-              currentRoute.includes("/bedroom") || isHovered.includes("/bedroom")
+              currentRoute.includes("#bedroom") || isHovered.includes("#bedroom")
                 ? { opacity: 0, display: "none" }
                 : { opacity: 1, transition: "opacity 1s ease-in-out" }
             }
@@ -232,7 +236,7 @@ export const MenuContent = () => {
             }}
             src="../images/slices/slice6.jpg"
             style={
-              !currentRoute.includes("/bedroom") && !isHovered.includes("/bedroom")
+              !currentRoute.includes("#bedroom") && !isHovered.includes("#bedroom")
                 ? { display: "none" }
                 : {}
             }

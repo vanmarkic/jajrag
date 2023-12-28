@@ -6,8 +6,6 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 import { StyledProject } from "../components/bodyLayout";
 
-import { Reset } from "styled-reset";
-
 const StyledButton = styled.button`
   border: none;
   background: none;
@@ -24,7 +22,6 @@ const RoomGallery = ({ data }) => {
           {group.edges
             .filter((e, i) => i === 0)
             .map((edge) => (
-              // <StyledButton className="image" onClick={() => console.log("rrea")}>
               <GatsbyImage
                 key={edge.node.id}
                 alt={"image"}
@@ -32,7 +29,6 @@ const RoomGallery = ({ data }) => {
                 objectFit="contain"
                 loading="eager"
               />
-              // </StyledButton>
             ))}
         </StyledProject>
       ))}

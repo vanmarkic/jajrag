@@ -1,14 +1,11 @@
 import * as React from "react";
-import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/layout";
 
 import { styled } from "styled-components";
 import { useInView } from "react-intersection-observer";
 
-import { useLocation, useNavigate } from "@reach/router";
-
-const HomePage = () => {
+export default function HomePage() {
   const [roomInView, setRoomInView] = React.useState("");
 
   const handleSetInView = (room) => {
@@ -22,11 +19,9 @@ const HomePage = () => {
       ))}
     </Layout>
   );
-};
+}
 
-export default HomePage;
-
-export { Head } from "./index";
+export { Head } from ".";
 
 const StyledProject = styled.div`
   min-height: 100vh;

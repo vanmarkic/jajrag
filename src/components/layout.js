@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { MenuContent } from "./MenuContent";
 import GlobalStyle from "../styles/global";
-// import { Head } from "../pages";
 import { useLocation } from "@reach/router";
 
 const StyledLayout = styled.div`

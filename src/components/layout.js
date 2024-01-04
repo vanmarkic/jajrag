@@ -96,7 +96,6 @@ const Layout = ({ children, roomInView }) => {
 
   const currentRoom = pathname.split("/");
   React.useEffect(() => {
-    console.log(roomInView);
     const documentHeight = () => {
       const doc = document.documentElement;
       doc.style.setProperty("--doc-height", `${window.innerHeight}px`);

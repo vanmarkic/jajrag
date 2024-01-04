@@ -9,7 +9,6 @@ export default function IndexPage() {
   const [roomInView, setRoomInView] = React.useState("");
 
   const handleSetInView = (room) => {
-    console.log(room);
     setRoomInView(room);
   };
   return (
@@ -38,7 +37,7 @@ const StyledProject = styled.div`
   }
 `;
 
-const Room = ({ imageUrl, description, name }) => {
+const Room = ({ imageUrl, description, name, hash, setInView }) => {
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
@@ -46,7 +45,8 @@ const Room = ({ imageUrl, description, name }) => {
 
   React.useEffect(() => {
     if (inView) {
-      window.history.pushState({}, window.title, "#" + name);
+      window.history.pushState({}, window.title, hash);
+      setInView(hash);
     }
   }, [inView]);
 
@@ -63,39 +63,39 @@ const Room = ({ imageUrl, description, name }) => {
 const ROOMS = [
   {
     name: "kitchen",
+    hash: "#kitchen",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus nisl, gravida rutrum porttitor vitae, consequat vel lacus. Nunc imperdiet ipsum eros, sed consectetur dolor tincidunt ornare. Duis condimentum orcipurus, quis sagittis felis ornare vitae. Integer suscipit, nisl at feugiat vulputate, ligula metus congue magna, a eleifend mi velit molestie lorem. Fusce vel mauris ac augue sodales faucibus. Sed molestie diam quis justo aliquam tempor. Pellentesque quis justo sapien. Suspendisse a volutpat quam. Sed sed nisl sit amet ipsum feugiat molestie non ut ante. Morbi massa turpis,mattis in est non, elementum facilisis ligula. Ut molestie et lacus egetelementum.",
     imageUrl: "./projects/kitchen/kitchen1/1.jpeg",
   },
   {
     name: "living-room",
+    hash: "#living-room",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus nisl, gravida rutrum porttitor vitae, consequat vel lacus. Nunc imperdiet ipsum eros, sed consectetur dolor tincidunt ornare. Duis condimentum orcipurus, quis sagittis felis ornare vitae. Integer suscipit, nisl at feugiat vulputate, ligula metus congue magna, a eleifend mi velit molestie lorem. Fusce vel mauris ac augue sodales faucibus. Sed molestie diam quis justo aliquam tempor. Pellentesque quis justo sapien. Suspendisse a volutpat quam. Sed sed nisl sit amet ipsum feugiat molestie non ut ante. Morbi massa turpis,mattis in est non, elementum facilisis ligula. Ut molestie et lacus egetelementum.",
     imageUrl: "./projects/living-room/lr1/1.jpeg",
   },
   {
     name: "office",
+    hash: "#office",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus nisl, gravida rutrum porttitor vitae, consequat vel lacus. Nunc imperdiet ipsum eros, sed consectetur dolor tincidunt ornare. Duis condimentum orcipurus, quis sagittis felis ornare vitae. Integer suscipit, nisl at feugiat vulputate, ligula metus congue magna, a eleifend mi velit molestie lorem. Fusce vel mauris ac augue sodales faucibus. Sed molestie diam quis justo aliquam tempor. Pellentesque quis justo sapien. Suspendisse a volutpat quam. Sed sed nisl sit amet ipsum feugiat molestie non ut ante. Morbi massa turpis,mattis in est non, elementum facilisis ligula. Ut molestie et lacus egetelementum.",
     imageUrl: "./projects/office/office1/1.jpeg",
   },
   {
     name: "doors",
+    hash: "#doors",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus nisl, gravida rutrum porttitor vitae, consequat vel lacus. Nunc imperdiet ipsum eros, sed consectetur dolor tincidunt ornare. Duis condimentum orcipurus, quis sagittis felis ornare vitae. Integer suscipit, nisl at feugiat vulputate, ligula metus congue magna, a eleifend mi velit molestie lorem. Fusce vel mauris ac augue sodales faucibus. Sed molestie diam quis justo aliquam tempor. Pellentesque quis justo sapien. Suspendisse a volutpat quam. Sed sed nisl sit amet ipsum feugiat molestie non ut ante. Morbi massa turpis,mattis in est non, elementum facilisis ligula. Ut molestie et lacus egetelementum.",
     imageUrl: "./projects/doors/doors1/porte-F-B.jpeg",
   },
 ];
 
-const updateHistory = (hash) => {
-  console.log("updateHistory", hash);
-  clearTimeout(updateHistory.timeout);
-  updateHistory.timeout = setTimeout(function () {
-    if (window.location.hash !== hash) {
-      window.history.pushState({}, window.title, hash);
-    }
-  }, 1000);
-};
+// const updateHistory = (hash) => {
+//   if (window.location.hash !== hash) {
+//     window.history.pushState({}, window.title, hash);
+//   }
+// };
 
 export const Head = () => (
   <>

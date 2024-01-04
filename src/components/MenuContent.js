@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import styled from "styled-components";
@@ -17,14 +17,8 @@ const StyledContact = styled.div`
 `;
 
 export const MenuContent = ({ roomInView }) => {
-  const { pathname, hash, href, state } = useLocation();
-  const [currentRoute, setCurrentRoute] = React.useState("#");
   const [isHovered, setIsHovered] = React.useState("#");
 
-  const handleIsCurrent = ({ href, isCurrent, location }) => {
-    // console.log(location, href, isCurrent);
-    if (isCurrent) setCurrentRoute(href);
-  };
   return (
     <>
       <StaticImage
@@ -40,7 +34,6 @@ export const MenuContent = ({ roomInView }) => {
         <Link
           onMouseEnter={() => setIsHovered("#kitchen")}
           onMouseLeave={() => setIsHovered("")}
-          getProps={handleIsCurrent}
           to="#kitchen"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
@@ -50,7 +43,7 @@ export const MenuContent = ({ roomInView }) => {
             loading="eager"
             src="../images/slices/slice1.jpg"
             style={
-              currentRoute.includes("#kitchen") || isHovered.includes("#kitchen")
+              roomInView.includes("#kitchen") || isHovered.includes("#kitchen")
                 ? { display: "none" }
                 : {}
             }
@@ -65,16 +58,15 @@ export const MenuContent = ({ roomInView }) => {
             }}
             src="../images/slices/slice1.jpg"
             style={
-              !currentRoute.includes("#kitchen") && !isHovered.includes("#kitchen")
-                ? { display: "none" }
-                : {}
+              roomInView.includes("#kitchen") || isHovered.includes("#kitchen")
+                ? {}
+                : { display: "none" }
             }
           />
         </Link>
         <Link
           onMouseEnter={() => setIsHovered("#living-room")}
           onMouseLeave={() => setIsHovered("")}
-          getProps={handleIsCurrent}
           to="#living-room"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
@@ -84,7 +76,7 @@ export const MenuContent = ({ roomInView }) => {
             loading="eager"
             src="../images/slices/slice2.jpg"
             style={
-              currentRoute.includes("#living-room") || isHovered.includes("#living-room")
+              roomInView.includes("#living-room") || isHovered.includes("#living-room")
                 ? { display: "none" }
                 : {}
             }
@@ -99,8 +91,7 @@ export const MenuContent = ({ roomInView }) => {
             }}
             src="../images/slices/slice2.jpg"
             style={
-              !currentRoute.includes("#living-room") &&
-              !isHovered.includes("#living-room")
+              !roomInView.includes("#living-room") && !isHovered.includes("#living-room")
                 ? { display: "none" }
                 : {}
             }
@@ -109,7 +100,6 @@ export const MenuContent = ({ roomInView }) => {
         <Link
           onMouseEnter={() => setIsHovered("#office")}
           onMouseLeave={() => setIsHovered("")}
-          getProps={handleIsCurrent}
           to="#office"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
@@ -119,7 +109,7 @@ export const MenuContent = ({ roomInView }) => {
             loading="eager"
             src="../images/slices/slice3.jpg"
             style={
-              currentRoute.includes("#office") || isHovered.includes("#office")
+              roomInView.includes("#office") || isHovered.includes("#office")
                 ? { display: "none" }
                 : {}
             }
@@ -134,7 +124,7 @@ export const MenuContent = ({ roomInView }) => {
             }}
             src="../images/slices/slice3.jpg"
             style={
-              !currentRoute.includes("#office") && !isHovered.includes("#office")
+              !roomInView.includes("#office") && !isHovered.includes("#office")
                 ? { display: "none" }
                 : {}
             }
@@ -143,7 +133,6 @@ export const MenuContent = ({ roomInView }) => {
         <Link
           onMouseEnter={() => setIsHovered("#bathroom")}
           onMouseLeave={() => setIsHovered("")}
-          getProps={handleIsCurrent}
           to="#bathroom"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
@@ -153,7 +142,7 @@ export const MenuContent = ({ roomInView }) => {
             loading="eager"
             src="../images/slices/slice4.jpg"
             style={
-              currentRoute.includes("#bathroom") || isHovered.includes("#bathroom")
+              roomInView.includes("#bathroom") || isHovered.includes("#bathroom")
                 ? { display: "none" }
                 : {}
             }
@@ -168,7 +157,7 @@ export const MenuContent = ({ roomInView }) => {
             }}
             src="../images/slices/slice4.jpg"
             style={
-              !currentRoute.includes("#bathroom") && !isHovered.includes("#bathroom")
+              !roomInView.includes("#bathroom") && !isHovered.includes("#bathroom")
                 ? { display: "none" }
                 : {}
             }
@@ -177,7 +166,6 @@ export const MenuContent = ({ roomInView }) => {
         <Link
           onMouseEnter={() => setIsHovered("#doors")}
           onMouseLeave={() => setIsHovered("")}
-          getProps={handleIsCurrent}
           to="#doors"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
@@ -187,7 +175,7 @@ export const MenuContent = ({ roomInView }) => {
             loading="eager"
             src="../images/slices/slice5.jpg"
             style={
-              currentRoute.includes("#doors") || isHovered.includes("#doors")
+              roomInView.includes("#doors") || isHovered.includes("#doors")
                 ? { display: "none" }
                 : {}
             }
@@ -202,7 +190,7 @@ export const MenuContent = ({ roomInView }) => {
             }}
             src="../images/slices/slice5.jpg"
             style={
-              !currentRoute.includes("#doors") && !isHovered.includes("#doors")
+              !roomInView.includes("#doors") && !isHovered.includes("#doors")
                 ? { display: "none" }
                 : {}
             }
@@ -211,7 +199,6 @@ export const MenuContent = ({ roomInView }) => {
         <Link
           onMouseEnter={() => setIsHovered("#bedroom")}
           onMouseLeave={() => setIsHovered("")}
-          getProps={handleIsCurrent}
           to="#bedroom"
           style={{ flex: "1 0 29% ", position: "relative" }}
           as="div"
@@ -221,7 +208,7 @@ export const MenuContent = ({ roomInView }) => {
             loading="eager"
             src="../images/slices/slice6.jpg"
             style={
-              currentRoute.includes("#bedroom") || isHovered.includes("#bedroom")
+              roomInView.includes("#bedroom") || isHovered.includes("#bedroom")
                 ? { opacity: 0, display: "none" }
                 : { opacity: 1, transition: "opacity 1s ease-in-out" }
             }
@@ -236,7 +223,7 @@ export const MenuContent = ({ roomInView }) => {
             }}
             src="../images/slices/slice6.jpg"
             style={
-              !currentRoute.includes("#bedroom") && !isHovered.includes("#bedroom")
+              !roomInView.includes("#bedroom") && !isHovered.includes("#bedroom")
                 ? { display: "none" }
                 : {}
             }
